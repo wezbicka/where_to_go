@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Place(models.Model):
     title = models.CharField('Название', max_length=200)
     description_short = models.TextField('Превью')
@@ -23,7 +24,7 @@ class Image(models.Model):
         related_name='images',
         on_delete=models.CASCADE
     )
-    file = models.FileField("Картинка", upload_to="media")
+    file = models.ImageField("Картинка",)
 
     def __str__(self):
         return f"{self.order_number} {self.place.title}"
