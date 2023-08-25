@@ -19,8 +19,8 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=200, verbose_name='Название')),
                 ('description_short', models.TextField(verbose_name='Превью')),
                 ('description_long', models.TextField(verbose_name='Описание')),
-                ('longitude', models.FloatField(verbose_name='Широта')),
-                ('latitude', models.FloatField(verbose_name='Долгота')),
+                ('longitude', models.FloatField(verbose_name='Долгота')),
+                ('latitude', models.FloatField(verbose_name='Широта')),
             ],
         ),
         migrations.CreateModel(
