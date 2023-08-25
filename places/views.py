@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from .models import Place
 
 
-def show_main_page(request):
+def index(request):
+    places = Place.objects.all()
     context = {
         "places": {
             "type": "FeatureCollection",
@@ -10,26 +12,14 @@ def show_main_page(request):
                     "type": "Feature",
                     "geometry": {
                         "type": "Point",
-                        "coordinates": [37.62, 55.793676]
+                        "coordinates": [place.longitude, place.latitude]
                     },
                     "properties": {
-                        "title": "«Легенды Москвы",
-                        "placeId": "moscow_legends",
+                        "title": place.title,
+                        "placeId": place.place_id,
                         "detailsUrl": "static/places/moscow_legends.json"
                     }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [37.64, 55.753676]
-                    },
-                    "properties": {
-                        "title": "Крыши24.рф",
-                        "placeId": "roofs24",
-                        "detailsUrl": "static/places/roofs24.json"
-                    }
-                }
+                } for place in places
             ]
         }
     }
