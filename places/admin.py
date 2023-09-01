@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import Place, Image
 from django.utils.html import format_html
+from adminsortable2.admin import SortableAdminBase, SortableTabularInline
 
 
-class ImageInline(admin.TabularInline):
+class ImageInline(SortableTabularInline):
     model = Image
     readonly_fields = ["get_preview"]
     fields = ('file', 'get_preview', 'order_number')
@@ -18,9 +19,11 @@ class ImageInline(admin.TabularInline):
             obj.file.url
         )
 
+    get_preview.short_description = "Превью"
+    
 
 @admin.register(Place)
-class PlaceAdmin(admin.ModelAdmin):
+class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
         ImageInline,
     ]
