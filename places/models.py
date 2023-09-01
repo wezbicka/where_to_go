@@ -30,3 +30,5 @@ class Image(models.Model):
     def __str__(self):
         return f"{self.order_number} {self.place.title}"
     
+    class Meta:
+        ordering = ['order_number']
