@@ -4,7 +4,7 @@
 
 Cайт о самых интересных местах в Москве. Авторский проект Артёма.
 
-[Демка сайта]("https://derzkayabelka.pythonanywhere.com/")
+(Демка сайта)["https://wezhbicka.pythonanywhere.com/"]
 
 ### Запуск
 
