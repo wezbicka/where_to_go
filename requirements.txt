@@ -9,3 +9,5 @@ Pillow==10.0.0
 python-dotenv==1.0.0
 sqlparse==0.4.4
 tzdata==2023.3
+requests==2.31.0
+urllib3==2.0.4
