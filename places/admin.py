@@ -10,14 +10,14 @@ class ImageInline(SortableTabularInline):
     readonly_fields = ["get_preview"]
     fields = ('file', 'get_preview', 'order_number')
     
-    def get_preview(self, obj):
-        if not obj.file:
+    def get_preview(self, image):
+        if not image.file:
             return format_html(
                 "Здесь будет превью, когда вы загрузите файл."
             )
         return format_html(
             '<img src="{}" style="max-height: 200px; max-width: 200px;" >',
-            obj.file.url
+            image.file.url
         )
 
     get_preview.short_description = "Превью"
