@@ -70,8 +70,8 @@ def import_place(json_path: str, url=False):
             latitude=imported_place['coordinates']['lat'],
             longitude=imported_place['coordinates']['lng'],
             defaults={
-                'description_long': imported_place.get('description_long', ''),
-                'description_short': imported_place.get('description_short', ''),
+                'long_description': imported_place.get('long_description', ''),
+                'short_description': imported_place.get('short_description', ''),
             },
         )
         if not created:

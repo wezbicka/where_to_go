@@ -20,7 +20,6 @@ def index(request):
                     },
                     "properties": {
                         "title": place.title,
-                        "placeId": place.place_id,
                         "detailsUrl": reverse("place-detail", args=[place.id])
                     }
                 } for place in places
@@ -36,8 +35,8 @@ def place_detail(request, place_id):
         {
             "title": place.title,
             "imgs": [image.file.url for image in place.images.all()],
-            "description_short": place.description_short,
-            "description_long": place.description_long,
+            "short_description": place.short_description,
+            "long_description": place.long_description,
             "coordinates": {
                 "lng": place.longitude,
                 "lat": place.latitude
