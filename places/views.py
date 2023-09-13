@@ -30,7 +30,8 @@ def index(request):
 
 
 def place_detail(request, place_id):
-    place = get_object_or_404(Place, pk=place_id)
+    place = get_object_or_404(Place.objects.prefetch_related("images"), pk=place_id)
+    print(place.images)
     return JsonResponse(
         {
             "title": place.title,

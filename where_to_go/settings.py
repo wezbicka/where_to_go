@@ -30,6 +30,10 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", True)
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', [])
 
 
@@ -42,11 +46,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
     'places.apps.PlacesConfig',
     'adminsortable2',
     'tinymce',
-]
+] + (
+    [
+        'debug_toolbar',    # https://github.com/jazzband/django-debug-toolbar
+    ] if DEBUG else []
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,8 +63,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-]
+] + (
+    [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ] if DEBUG else []
+)
 
 ROOT_URLCONF = 'where_to_go.urls'
 
@@ -128,9 +138,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+if DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+    STATICFILES_DIRS = [
+        # STATIC_ROOT,
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
