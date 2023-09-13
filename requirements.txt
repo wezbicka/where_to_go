@@ -1,5 +1,6 @@
 Django==4.2
 django-admin-sortable2==2.1.9
+django_debug_toolbar==4.2.0
 django-tinymce==3.6.1
 environs==9.5.0
 Pillow==10.0.0
