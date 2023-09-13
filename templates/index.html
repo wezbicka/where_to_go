@@ -272,8 +272,8 @@
           title: data.title,
           placeId: placeId,
           imgs: data.imgs || [],
-          short_description: data.description_short,
-          long_description: data.description_long,
+          short_description: data.short_description,
+          long_description: data.long_description,
         };
       } finally {
         if (sidebarApp.loadingPlaceId == placeId){
