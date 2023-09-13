@@ -152,3 +152,4 @@ cython_debug/
 #.idea/
 places_json/
 media/
+staticfiles/
