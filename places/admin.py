@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from adminsortable2.admin import SortableAdminBase, SortableTabularInline
+from adminsortable2.admin import SortableAdminBase, \
+    SortableTabularInline, SortableAdminMixin
 
 from .models import Place, Image
 
@@ -25,9 +26,13 @@ class ImageInline(SortableTabularInline):
 
 @admin.register(Place)
 class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
+    search_fields = ["title", ]
     inlines = [
         ImageInline,
     ]
 
 
-admin.site.register(Image)
+@admin.register(Image)
+class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
+    raw_id_fields = ("place",)
+    list_filter = ("place",)
