@@ -49,11 +49,7 @@ INSTALLED_APPS = [
     'places.apps.PlacesConfig',
     'adminsortable2',
     'tinymce',
-] + (
-    [
-        'debug_toolbar',    # https://github.com/jazzband/django-debug-toolbar
-    ] if DEBUG else []
-)
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,11 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-] + (
-    [
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-    ] if DEBUG else []
-)
+]
 
 ROOT_URLCONF = 'where_to_go.urls'
 
